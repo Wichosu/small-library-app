@@ -1,6 +1,7 @@
 const newBookButton = document.getElementById('newBookButton')
 const newBookForm = document.getElementById('newBookForm')
 const addBookButton = document.getElementById('addBookButton')
+const table = document.getElementById('table')
 let myLibrary = []
 
 function Book(title, author, pages, state){
@@ -11,8 +12,17 @@ function Book(title, author, pages, state){
 }
 
 const summonForm = () => {
-  newBookForm.style.visibility = 'visible'
-  newBookButton.style.visibility = 'hidden'
+  if(newBookButton.style.visibility !== 'hidden'){
+    newBookForm.style.height = 'fit-content'
+    newBookForm.style.visibility = 'visible'
+    newBookButton.style.visibility = 'hidden'
+  }
+  else{
+    newBookForm.style.height = '0'
+    newBookForm.style.visibility = 'hidden'
+    newBookButton.style.visibility = 'visible'
+  }
+
 }
 
 const addBook = () => {
@@ -21,9 +31,15 @@ const addBook = () => {
   const inputPages = document.getElementById('newbook-form-pages')
   const inputState = document.getElementById('newbook-form-state')
   myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputState.value))
-  console.log(myLibrary)
+  myLibrary.forEach(element => {
+    const row = document.createElement('tr')
+    row.appendChild(document.createElement('td').appendChild(document.createTextNode(element.title)))
+    table.appendChild(row)
+  })
 }
+
+
 
 newBookButton.addEventListener('click', summonForm, false)
 
-//addBookButton.addEventListener('click', addBook, false)
+addBookButton.addEventListener('click', summonForm, false)
