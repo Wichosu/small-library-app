@@ -9,23 +9,16 @@
 </head>
 <body>
   <h1>This small library app shows a table with books you add</h1>
-  <form id='newBookForm' class='newbook-form'>
+  <form id='newBookForm' class='newbook-form' onsubmit='addBook();return false'>
     <label>Title</label>
-    <input type='text' name='' id='' />
+    <input type='text' name='' id='newbook-form-title' />
     <label>Author</label>
-    <input type='text' name='' id='' />
+    <input type='text' name='' id='newbook-form-author' />
     <label>Pages</label>
-    <input type='number' name='' id='' />
-    <label>Status</label>
-    <div>
-      <input type='radio' name='status' id='reading' value='reading'>
-      <label for='reading'>Reading</label>
-    </div>
-    <div>
-      <input type='radio' name='status' id='finished' value='finished'>
-      <label for='finished'>Finished</label>
-    </div>
-    <button>Add New Book</button>
+    <input type='number' name='' id='newbook-form-pages' />
+    <label>Have you read this book?</label>
+    <input type='checkbox' name='' id='newbook-form-state' value='true'> 
+    <button id='addBookButton'>Add New Book</button>
   </form>
   <button id='newBookButton' class='newbook-btn'>NEW BOOK</button>
   <script src='script.js'></script>
