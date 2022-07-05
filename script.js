@@ -39,15 +39,22 @@ const addBook = () => {
   const rowAuthor = document.createElement('td')
   const rowPages = document.createElement('td')
   const rowState = document.createElement('td')
+  const rowDelete = document.createElement('td')
+
   rowTitle.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].title))
   rowAuthor.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].author))
   rowPages.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].pages))
   rowState.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].state))
 
+  
+  rowState.style.cursor = 'pointer'
+  rowDelete.style.cursor = 'pointer'
+
   row.appendChild(rowTitle)
   row.appendChild(rowAuthor)
   row.appendChild(rowPages)
   row.appendChild(rowState)
+  row.appendChild(rowDelete)
 
   table.appendChild(row)
 }

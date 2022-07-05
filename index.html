@@ -11,14 +11,14 @@
   <h1>This small library app shows a table with books you add</h1>
   <form id='newBookForm' class='newbook-form' onsubmit='addBook();return false'>
     <label>Title</label>
-    <input type='text' name='' id='newbook-form-title' />
+    <input type='text' name='' id='newbook-form-title' placeholder='Lazarillo de Tormes' />
     <label>Author</label>
-    <input type='text' name='' id='newbook-form-author' />
+    <input type='text' name='' id='newbook-form-author' placeholder='Anonimo' />
     <label>Pages</label>
-    <input type='number' name='' id='newbook-form-pages' />
+    <input type='number' name='' id='newbook-form-pages' placeholder='120' />
     <label>Have you read this book?</label>
     <input type='checkbox' name='' id='newbook-form-state' value='true'> 
-    <button id='addBookButton'>Add New Book</button>
+    <button id='addBookButton' class='newbook-form-btn'>Add New Book</button>
   </form>
   <button id='newBookButton' class='newbook-btn'>NEW BOOK</button>
   <table id='table'>
@@ -27,6 +27,7 @@
       <th>Author</th>
       <th>Pages</th>
       <th>Read?</th>
+      <th>Delete?</th>
     </tr>
   </table>
   <script src='script.js'></script>
