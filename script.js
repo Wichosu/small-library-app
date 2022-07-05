@@ -30,17 +30,25 @@ const addBook = () => {
   const inputAuthor = document.getElementById('newbook-form-author')
   const inputPages = document.getElementById('newbook-form-pages')
   const inputState = document.getElementById('newbook-form-state')
-  myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputState.value))
+
+  myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputState.checked))
+
   const row = document.createElement('tr')
-  const rowTitle = document.createElement('td').appendChild(document.createTextNode(myLibrary[myLibrary.length-1].title))
-  rowTitle.appendChild
-  const rowAuthor = document.createElement('td').appendChild(document.createTextNode(myLibrary[myLibrary.length-1].author))
-  const rowPages = document.createElement('td').appendChild(document.createTextNode(myLibrary[myLibrary.length-1].pages))
-  const rowState = document.createElement('td').appendChild(document.createTextNode(myLibrary[myLibrary.length-1].state))
+
+  const rowTitle = document.createElement('td')
+  const rowAuthor = document.createElement('td')
+  const rowPages = document.createElement('td')
+  const rowState = document.createElement('td')
+  rowTitle.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].title))
+  rowAuthor.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].author))
+  rowPages.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].pages))
+  rowState.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].state))
+
   row.appendChild(rowTitle)
   row.appendChild(rowAuthor)
   row.appendChild(rowPages)
   row.appendChild(rowState)
+
   table.appendChild(row)
 }
 
