@@ -2,13 +2,18 @@ const newBookButton = document.getElementById('newBookButton')
 const newBookForm = document.getElementById('newBookForm')
 const addBookButton = document.getElementById('addBookButton')
 const table = document.getElementById('table')
+const inputTitle = document.getElementById('newbook-form-title')
+const inputAuthor = document.getElementById('newbook-form-author')
+const inputPages = document.getElementById('newbook-form-pages')
+const inputState = document.getElementById('newbook-form-state')
 let myLibrary = []
 
-function Book(title, author, pages, state){
+function Book(title, author, pages, state, destroy){
   this.title = title
   this.author = author
   this.pages = pages
   this.state = state
+  this.destroy = destroy
 }
 
 const summonForm = () => {
@@ -26,12 +31,14 @@ const summonForm = () => {
 }
 
 const addBook = () => {
-  const inputTitle = document.getElementById('newbook-form-title')
-  const inputAuthor = document.getElementById('newbook-form-author')
-  const inputPages = document.getElementById('newbook-form-pages')
-  const inputState = document.getElementById('newbook-form-state')
 
-  myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputState.checked))
+  myLibrary.push(new Book(
+    inputTitle.value, 
+    inputAuthor.value,
+    inputPages.value,
+    inputState.checked,
+    false
+  ));
 
   const row = document.createElement('tr')
 
@@ -45,10 +52,7 @@ const addBook = () => {
   rowAuthor.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].author))
   rowPages.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].pages))
   rowState.appendChild(document.createTextNode(myLibrary[myLibrary.length-1].state))
-
-  
-  rowState.style.cursor = 'pointer'
-  rowDelete.style.cursor = 'pointer'
+  rowDelete.appendChild(document.createTextNode('X'))
 
   row.appendChild(rowTitle)
   row.appendChild(rowAuthor)
