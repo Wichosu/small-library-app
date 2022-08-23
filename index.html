@@ -11,13 +11,13 @@
   <h1>This small library app shows a table with books you add</h1>
   <form id='newBookForm' class='newbook-form' onsubmit='addBook();return false'>
     <label>Title</label>
-    <input type='text' name='' id='newbook-form-title' placeholder='Lazarillo de Tormes' />
+    <input type='text' name='' id='newbook-form-title' placeholder='Lazarillo de Tormes' required/>
     <label>Author</label>
-    <input type='text' name='' id='newbook-form-author' placeholder='Anonimo' />
+    <input type='text' name='' id='newbook-form-author' placeholder='Anonimo' required/>
     <label>Pages</label>
-    <input type='number' name='' id='newbook-form-pages' placeholder='120' />
+    <input type='number' name='' id='newbook-form-pages' placeholder='120' required/>
     <label>Have you read this book?</label>
-    <input type='checkbox' name='' id='newbook-form-state' value='true'> 
+    <input type='checkbox' name='' id='newbook-form-state' value='true' /> 
     <button id='addBookButton' class='newbook-form-btn'>Add New Book</button>
   </form>
   <button id='newBookButton' class='newbook-btn'>NEW BOOK</button>

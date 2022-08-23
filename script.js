@@ -30,11 +30,19 @@ const summonForm = () => {
   }
 
 }
-
+/*Delete pseudocode
+get id
+search id in table
+  element with id found so delete element
+search id in array
+  id found so delete 
+*/
 const deleteBook = id => {
   let shortId = id.target.parentElement.id
-  //remove element from html
-  table.childNodes.item(String(parseInt(shortId) + 2)).remove()
+
+  table.childNodes.forEach(child => {
+    shortId===child.id? child.remove() : ''
+  })
   //remove element from array by id
   myLibrary.splice(shortId, 1)
 }
@@ -79,9 +87,6 @@ const addBook = () => {
   table.appendChild(row)
 }
 
-
-
 newBookButton.addEventListener('click', summonForm, false)
 
 addBookButton.addEventListener('click', summonForm, false)
-
