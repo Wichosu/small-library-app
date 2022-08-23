@@ -37,26 +37,44 @@ search id in table
 search id in array
   id found so delete 
 */
-const deleteBook = id => {
-  let shortId = id.target.parentElement.id
+const deleteBook = e => {
+  let id = e.target.parentElement.id
 
   table.childNodes.forEach(child => {
-    shortId===child.id? child.remove() : ''
+    id===child.id? child.remove() : ''
   })
   //remove element from array by id
-  myLibrary.splice(shortId, 1)
+  myLibrary.splice(id, 1)
+}
+
+/*Update read status pseudocode
+get status
+invert status
+update table
+update array
+*/
+const updateStatus = e => {
+  let id = e.target.parentElement.id
+  //switch values
+  e.target.value = !e.target.value
+  //Update table
+  e.target.textContent = e.target.value
+  //update array
+  myLibrary[id].state = e.target.value
+
 }
 
 const addBook = () => {
   const row = document.createElement('tr')
-
-  row.id = idAsigner++
 
   const rowTitle = document.createElement('td')
   const rowAuthor = document.createElement('td')
   const rowPages = document.createElement('td')
   const rowState = document.createElement('td')
   const rowDelete = document.createElement('td')
+  
+  row.id = idAsigner++
+  rowState.value = inputState.checked
 
   myLibrary.push(new Book(
     inputTitle.value, 
@@ -76,6 +94,7 @@ const addBook = () => {
   rowDelete.style.cursor = 'pointer'
 
   rowDelete.addEventListener('click', deleteBook)
+  rowState.addEventListener('click', updateStatus)
 
   row.appendChild(rowTitle)
   row.appendChild(rowAuthor)
